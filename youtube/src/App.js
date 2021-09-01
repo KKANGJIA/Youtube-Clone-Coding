@@ -1,37 +1,31 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Cards from './component/cards.jsx';
 import Nav from './component/nav.jsx';
 
-class App extends Component {
-  state = { 
-    data: [],
-    value: '', //input에 입력하는 value
-    search: [],
-  }
+const App = ({ youtube }) => { //필요한 dependency를 외부에서 받아와야한다
+  const [videos, setVideos] = useState([]);
 
-  onSubmit = () => {
-    fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${this.state.value}&type=video&key=REACT_APP_API_KEY`)
-      .then(response => response.text())
-      .then(result => this.setState({search: [...this.state.search, JSON.parse(result)]}))
-      .catch(error => console.log('error', error));
-  }
+  const onSearch = query => {
+   youtube
+    .search(query)
+    .then((videos) => setVideos(videos))
+  };
 
-  componentDidMount() {
-    fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=REACT_APP_API_KEY")
-    .then(response => response.text())
-    .then(result => this.setState({data: [...this.state.data, JSON.parse(result)]}))
-    .catch(error => console.log('error', error));
-  }
+  useEffect(() => { //첫 마운트되었을때 정보를 받아오면 되니까 componentDidMount
+   //여기서 youtube클래스 인스턴스로 생성하지 않기 여기서 생성하면 계속적으로 새로운 렌더링이 발생해서 네트웨크 통신을 하게되므로 성능악화
+   //여기서는 인스턴스를 받아와서 실행만 해주기
+   youtube
+    .mostPopular()
+    .then( videos => setVideos(videos))
+  }, []);
   
-  render() {
-    return (
-      <div className="App">
-        <Nav onSubmit={this.onSubmit} value={this.state.value}/>
-        <Cards search={this.onSubmit} items={this.state.data}/>
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      <Nav onSearch={onSearch}/>
+      <Cards search={onSearch} videos={videos}/>
+    </div>
+  );
 }
 
 export default App;
