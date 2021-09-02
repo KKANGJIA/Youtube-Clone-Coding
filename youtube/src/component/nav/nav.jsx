@@ -1,4 +1,6 @@
 import React, { useRef } from 'react';
+import styles from './nav.module.css';
+
 
 const Nav = ({ onSearch }) => {
 
@@ -21,11 +23,11 @@ const Nav = ({ onSearch }) => {
 
   return (
     <header>
-      <div className="fixbar-wapper">
-        <div className="logo" />
-        <div className="fixbar-search">
-          <input ref={inputRef} onChange={onChange} placeholder="검색어를 입력하세요" type="text"/ >
-          <button onClick={onClick}>
+      <div className={styles.fixbar_wapper}>
+        <div className={styles.logo} />
+        <div className={styles.fixbar_search}>
+          <input className={styles.input} ref={inputRef} onChange={onChange} placeholder="검색어를 입력하세요" type="text"/ >
+          <button className={styles.btn} onClick={onClick}>
             <i className="fas fa-search"></i>
           </button>
         </div>

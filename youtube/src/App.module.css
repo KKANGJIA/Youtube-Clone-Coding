@@ -1,0 +1,38 @@
+/* 
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+.App {
+  width: 100%;
+  margin: auto;
+}
+
+/* 부모를 flex */
+.content {
+  display: flex;
+}
+
+/* 자식의 비율을 나누기 7 : 3 */
+.detail {
+  flex: 1 1 70%;
+}
+
+.list {
+  flex: 1 1 30%;
+}
+
+@media screen and (max-width: 768px) {
+  .App {
+    width: 100%;
+  }
+  .content {
+    position: absolute;
+    left: 5%;
+  }
+}

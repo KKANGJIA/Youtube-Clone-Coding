@@ -1,0 +1,11 @@
+.cards {
+  margin: auto;
+  /* text-align: left; */
+  /* justify-content: left; */
+  display: flex;
+  flex-wrap: wrap;
+  /* 줄바꿈 속성 */
+}
+
+@media screen and (max-width: 768px) {
+}

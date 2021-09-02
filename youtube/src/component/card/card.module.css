@@ -1,0 +1,66 @@
+.card {
+  width: 48.5%;
+  margin: 5px;
+  text-align: left;
+  display: flex;
+  -webkit-box-shadow: 2px 5px 7px 5px rgba(182, 182, 182, 0.51);
+  box-shadow: 2px 5px 7px 5px rgba(182, 182, 182, 0.51);
+  cursor: pointer;
+  transition: transform 300ms;
+}
+
+.card.grid {
+  width: 49%;
+}
+
+.card.list {
+  width: 100%;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card_img {
+  width: 250px;
+  height: 170px;
+  margin-right: 10px;
+}
+
+.thumbnail {
+  position: absolute;
+  /* 크기변경안될때는 absolute */
+  width: 210px;
+  margin: 5px;
+}
+
+.card_img_text {
+  align-items: center;
+  width: 200px;
+  font-size: 0.9em;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    width: 45%;
+  }
+
+  .card.grid {
+    width: 46%;
+  }
+
+  .card_img {
+    width: 120px;
+    height: 100px;
+    margin-right: 18px;
+  }
+
+  .thumbnail {
+    width: 100px;
+  }
+
+  .card_img_text {
+    width: 150px;
+    font-size: 0.8em;
+  }
+}

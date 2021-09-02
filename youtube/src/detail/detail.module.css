@@ -1,0 +1,49 @@
+.detail {
+  position: relative;
+}
+
+.video {
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  top: 10px;
+  height: 30em;
+}
+
+.video_text {
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  top: 500px;
+  font-size: 2em;
+}
+
+.video_des {
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  top: 600px;
+  font-size: 1em;
+}
+
+@media screen and (max-width: 768px) {
+  .video {
+    position: absolute;
+    width: 90%;
+    left: 5%;
+    top: 10px;
+    height: 10em;
+  }
+
+  .video_text {
+    left: 5%;
+    top: 200px;
+    font-size: 1.3em;
+  }
+
+  .video_des {
+    left: 5%;
+    top: 320px;
+    font-size: 1em;
+  }
+}
